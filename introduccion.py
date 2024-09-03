@@ -75,12 +75,23 @@ tensor = np.array([[[1,2],[3,4],[4,5],[7,8]]])
 #  for elemento in array:
 #      print(type(elemento))
 #      print(elemento)
-#
-# Ejercicios personales
-array = np.array([15,25,35,45,55])
-#  print(array[0:2])
-#  print(array[0])
-#  print(array[-1])
-bool = array > 30
-tipo = bool.array(bool,dtpy=object)
-print(tipo)
+
+# Clase 6. Broadcasting y operaciones lógicas e Numpy
+prices = np.array([100,200,300])
+discount = np.array([0.9])
+discount_prices = prices*discount
+#  print(discount_prices)
+prices = np.random.randint(100,500,size=(3,3),dtype=np.int64)
+discount = np.array([10,20,30])
+discount_prices = prices+discount 
+print(prices)
+print(discount_prices)
+
+#  # Ejercicios personales
+#  array = np.array([15,25,35,45,55])
+#  #  print(array[0:2])
+#  #  print(array[0])
+#  #  print(array[-1])
+#  bool = array > 30
+#  tipo = bool.array(bool,dtpy=object)
+#  print(tipo)
