@@ -92,8 +92,17 @@ print(np.all(array > 3))
 print(np.any(array > 3))
 
 array_a = np.array([1,2,3])
-array_b = np.array([4,5])
+array_b = np.array([4,5,6])
 concatenated = np.concatenate((array_a,array_b))
 print(concatenated)
 
+satecked_v = np.vstack((array_a,array_b))
+print(satecked_v)
 
+stacked_h = np.hstack((array_a,array_b))
+print(stacked_h)
+
+array_c = np.arange(1,15+1)
+print(array_c)
+split_array = np.split(array_c,5)
+print(split_array)
