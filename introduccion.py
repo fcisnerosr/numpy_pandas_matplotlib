@@ -1,6 +1,6 @@
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+#  import pandas as pd
+#  import matplotlib.pyplot as plt
 import os
 
 os.system('clear')
@@ -87,22 +87,47 @@ tensor = np.array([[[1,2],[3,4],[4,5],[7,8]]])
 #  print(prices)
 #  print(discount_prices)
 
-array = np.array([1,2,3,4,5])
-print(np.all(array > 3))
-print(np.any(array > 3))
+#  array = np.array([1,2,3,4,5])
+#  print(np.all(array > 3))
+#  print(np.any(array > 3))
+#
+#  array_a = np.array([1,2,3])
+#  array_b = np.array([4,5,6])
+#  concatenated = np.concatenate((array_a,array_b))
+#  print(concatenated)
+#
+#  satecked_v = np.vstack((array_a,array_b))
+#  print(satecked_v)
+#
+#  stacked_h = np.hstack((array_a,array_b))
+#  print(stacked_h)
+#
+#  array_c = np.arange(1,15+1)
+#  print(array_c)
+#  split_array = np.split(array_c,5)
+#  print(split_array)
 
-array_a = np.array([1,2,3])
-array_b = np.array([4,5,6])
-concatenated = np.concatenate((array_a,array_b))
-print(concatenated)
+#  survey_responses = np.array(["excelente","bueno","bueno","excelente","malo","bueno","bueno","excelente"])
+#  print(survey_responses)
+#  unique_elements, counts = np.unique(survey_responses,return_counts=True)
+#  print(unique_elements)
+#  print(counts)
 
-satecked_v = np.vstack((array_a,array_b))
-print(satecked_v)
+#  array_x = np.arange(10+1)
+#  print(array_x)
+#  view_array = array_x[0:5]
+#  array_x[0:2+1] = [9,9,9]
+#  print(array_x)
+#  print(view_array)
 
-stacked_h = np.hstack((array_a,array_b))
-print(stacked_h)
+#  array_x = np.arange(10+1)
+#  copy_x = array_x[[0,1]]
+#  array_x[0:1+1] = [10,10]
+#  print(copy_x)
+#  print(array_x)
 
-array_c = np.arange(1,15+1)
-print(array_c)
-split_array = np.split(array_c,5)
-print(split_array)
+matrix = np.array([[1,2],[4,5],[6,9]])
+print(matrix)
+matrixT = matrix.T
+print(matrixT)
+
