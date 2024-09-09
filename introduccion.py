@@ -131,3 +131,5 @@ print(matrix)
 matrixT = matrix.T
 print(matrixT)
 
+A = np.arange(1,50+1)
+reshaped_A = A.reshape(5,10)
