@@ -133,3 +133,14 @@ print(matrixT)
 
 A = np.arange(1,50+1)
 reshaped_A = A.reshape(5,10)
+
+vector = np.arange(9+1)
+print(vector)
+vector_reberse = vector[::-1]
+print(vector_reberse)
+
+matrix = np.array([[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15]])
+flattened_matrix = matrix.flatten()
+print(matrix)
+print(flattened_matrix)
+
