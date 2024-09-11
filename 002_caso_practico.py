@@ -8,20 +8,21 @@ def sum_mean(ventas,nombre_ventas):
     mean = np.mean(ventas)
     print(f'La suma del {nombre_ventas} es {sum} y su media es {mean}')
     
-def index():
-
-def ventas_index(mes_input,ventas):
+def indexf(mes_input,meses):
     index = 0
     for mes in meses:
         if mes == mes_input:
             break
         else:
             index = index+2
+    return index
+
+def ventas_index(mes_input,ventas,meses):
+    index = indexf(mes_input,meses)
     venta_mes_index = ventas[index]
     return venta_mes_index
 
-def media_mes_index(mes_input,ventas):
-    splash
+#  def media_mes_index(mes_input,ventas):
 
 # Paso 1: Crear arrays con datos de ventas mensuales
 # Crea un array de meses.
@@ -44,12 +45,12 @@ sum_mean(ventas_C,"Ventas C")
 # Calcula el promedio de ventas por producto.
 # Identifica el mes con mayor y menor ventas usando las funciones adecuadas de NumPy.
 # Imprime el total de ventas por mes, el promedio de ventas por producto, y los meses con mayor y menor ventas.
-mes_input = 'Febrero'
-ventas_mes_A = ventas_index(mes_input,ventas_A)
-ventas_mes_B = ventas_index(mes_input,ventas_B)
-ventas_mes_C = ventas_index(mes_input,ventas_C)
+mes_input = 'Marzo'
+ventas_mes_A = ventas_index(mes_input,ventas_A,meses)
+ventas_mes_B = ventas_index(mes_input,ventas_B,meses)
+ventas_mes_C = ventas_index(mes_input,ventas_C,meses)
 suma_mes_3 = ventas_mes_A+ventas_mes_B+ventas_mes_C
-print(suma_mes_3)
+print(f'La suma de los 3 ventas de {mes_input} es {suma_mes_3}')
 
 
 
