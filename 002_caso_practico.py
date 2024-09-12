@@ -33,7 +33,7 @@ ventas_A = np.array([150, 200, 250, 300, 220, 210, 180, 190, 230, 240, 280, 300]
 ventas_B = np.array([180, 210, 230, 250, 270, 260, 240, 250, 270, 290, 310, 330])
 ventas_C = np.array([200, 220, 240, 260, 280, 300, 320, 340, 360, 380, 400, 420])
 
-# Paso 2: Transformaciones básicas con NumPy
+# Paso 2: Transformaciones básica
 # Calcula la media y la suma de las ventas para cada producto A, B, y C.
 # Imprime los resultados.
 sum_mean(ventas_A,"Ventas A")
@@ -41,16 +41,27 @@ sum_mean(ventas_B,"Ventas B")
 sum_mean(ventas_C,"Ventas C")
 
 # Paso 3: Manipulación y análisis de datos
-# Calcula el total de ventas por mes sumando las ventas de los tres productos.
-# Calcula el promedio de ventas por producto.
-# Identifica el mes con mayor y menor ventas usando las funciones adecuadas de NumPy.
-# Imprime el total de ventas por mes, el promedio de ventas por producto, y los meses con mayor y menor ventas.
+# Calcula el total de las ventas dado un mes determinado
 mes_input = 'Marzo'
 ventas_mes_A = ventas_index(mes_input,ventas_A,meses)
 ventas_mes_B = ventas_index(mes_input,ventas_B,meses)
 ventas_mes_C = ventas_index(mes_input,ventas_C,meses)
 suma_mes_3 = ventas_mes_A+ventas_mes_B+ventas_mes_C
 print(f'La suma de los 3 ventas de {mes_input} es {suma_mes_3}')
+# Calcula el total de ventas por mes sumando las ventas de los tres productos.
+num_mes = 0
+suma_por_mes = np.zeros((3,len(meses)))
+print(suma_por_mes)
+#  for mes in meses:
+#      suma_por_mes =
+#      ventas_A[num_mes]+ventas_B[num_mes]+ventas_C[num_mes]
+#      num_mes = num_mes+1
+#  print(suma_por_mes)
+
+
+# Calcula el promedio de ventas por producto.
+# Identifica el mes con mayor y menor ventas usando las funciones adecuadas de NumPy.
+# Imprime el total de ventas por mes, el promedio de ventas por producto, y los meses con mayor y menor ventas.
 
 
 
