@@ -49,27 +49,25 @@ ventas_mes_C = ventas_index(mes_input,ventas_C,meses)
 suma_mes_3 = ventas_mes_A+ventas_mes_B+ventas_mes_C
 print(f'La suma de los 3 ventas de {mes_input} es {suma_mes_3}')
 # Calcula el total de ventas por mes sumando las ventas de los tres productos.
-index = 0
-concatenated_ventas = np.hstack([[ventas_A],[ventas_B],[ventas_C]])
-flattened = concatenated_ventas.flatten()
-print(flattened) 
-for mes in meses:
-     print(flattened[index])
-     index =+3
-
-#  num_mes = 0
-#  suma_por_mes = np.zeros((3,len(meses)))
-#  print(suma_por_mes)
-#  for columna in meses:
-#      for fila in 3:
-#      suma_por_mes =
-#      ventas_A[num_mes]+ventas_B[num_mes]+ventas_C[num_mes]
-#      num_mes = num_mes+1
-#  print(suma_por_mes)
-
-
+stacked_v = np.vstack((ventas_A,ventas_B,ventas_C))
+print(stacked_v)
+largo_fila = np.arange(len(ventas_A))
+vector_sum = np.zeros(len(ventas_A))
+for col in largo_fila:
+    vector_sum[col] = np.sum(stacked_v[:,col])
+print(vector_sum)
+    
 # Calcula el promedio de ventas por producto.
+largo_col = np.arange(stacked_v.shape[0])
+print(largo_col)
+vector_mean = np.zeros(len(largo_col))
+for fila in largo_col:
+    vector_mean[fila] = np.mean(stacked_v[fila])
+print(vector_mean)
+
+
 # Identifica el mes con mayor y menor ventas usando las funciones adecuadas de NumPy.
+
 # Imprime el total de ventas por mes, el promedio de ventas por producto, y los meses con mayor y menor ventas.
 
 
