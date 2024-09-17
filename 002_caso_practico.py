@@ -48,6 +48,8 @@ ventas_mes_B = ventas_index(mes_input,ventas_B,meses)
 ventas_mes_C = ventas_index(mes_input,ventas_C,meses)
 suma_mes_3 = ventas_mes_A+ventas_mes_B+ventas_mes_C
 print(f'La suma de los 3 ventas de {mes_input} es {suma_mes_3}')
+
+# Imprime el total de ventas por mes, el promede ventas por producto, y los meses con mayor y menor ventas.
 # Calcula el total de ventas por mes sumando las ventas de los tres productos.
 stacked_v = np.vstack((ventas_A,ventas_B,ventas_C))
 print(stacked_v)
@@ -59,24 +61,34 @@ print(vector_sum)
     
 # Calcula el promedio de ventas por producto.
 largo_col = np.arange(stacked_v.shape[0])
-print(largo_col)
 vector_mean = np.zeros(len(largo_col))
 for fila in largo_col:
     vector_mean[fila] = np.mean(stacked_v[fila])
 print(vector_mean)
 
-
 # Identifica el mes con mayor y menor ventas usando las funciones adecuadas de NumPy.
-
-# Imprime el total de ventas por mes, el promedio de ventas por producto, y los meses con mayor y menor ventas.
-
-
+valor_mayor = np.max(vector_sum)
+valor_menor = np.min(vector_sum)
+print(largo_fila)
+for num in largo_fila:
+    if valor_mayor == vector_sum[num]:
+        print(f'Mes con mayor ventas: {meses[num]}. Ventas = {valor_mayor}')
+    elif valor_menor == vector_sum[num]:
+        print(f'Mes con menor ventas: {meses[num]}. Ventas = {valor_menor}')
 
 # Paso 4: Operaciones avanzadas con NumPy
 # Crea una matriz de ventas con ventas_A, ventas_B, y ventas_C.
+stacked_v = np.vstack((ventas_A,ventas_B,ventas_C))
+
 # Reorganiza la matriz con reshape en una nueva estructura de 3x4x3.
+ventas_reshaped = stacked_v.reshape(3,4,3)
+print(f'ventas_reshaped = {ventas_reshaped}')
 # Transpón la matriz de ventas.
+ventas_reshaped_T = stacked_v.T
+print(f'ventas_transpuesta = {ventas_reshaped_T}')
+
 # Imprime la matriz original, la matriz reorganizada, y la matriz transpuesta.
+
 
 # Invertir arrays y aplanar matrices
 # Invierte el orden de los elementos en cada fila de la matriz de ventas.
