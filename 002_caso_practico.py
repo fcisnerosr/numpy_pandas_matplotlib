@@ -49,15 +49,23 @@ ventas_mes_C = ventas_index(mes_input,ventas_C,meses)
 suma_mes_3 = ventas_mes_A+ventas_mes_B+ventas_mes_C
 print(f'La suma de los 3 ventas de {mes_input} es {suma_mes_3}')
 # Calcula el total de ventas por mes sumando las ventas de los tres productos.
-num_mes = 0
-suma_por_mes = np.zeros((3,len(meses)))
-print(suma_por_mes)
-for columna in meses:
-    for fila in 3:
-    suma_por_mes =  
-    ventas_A[num_mes]+ventas_B[num_mes]+ventas_C[num_mes]
-    num_mes = num_mes+1
-print(suma_por_mes)
+index = 0
+concatenated_ventas = np.hstack([[ventas_A],[ventas_B],[ventas_C]])
+flattened = concatenated_ventas.flatten()
+print(flattened) 
+for mes in meses:
+     print(flattened[index])
+     index =+3
+
+#  num_mes = 0
+#  suma_por_mes = np.zeros((3,len(meses)))
+#  print(suma_por_mes)
+#  for columna in meses:
+#      for fila in 3:
+#      suma_por_mes =
+#      ventas_A[num_mes]+ventas_B[num_mes]+ventas_C[num_mes]
+#      num_mes = num_mes+1
+#  print(suma_por_mes)
 
 
 # Calcula el promedio de ventas por producto.
