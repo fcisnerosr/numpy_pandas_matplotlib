@@ -79,19 +79,22 @@ for num in largo_fila:
 # Paso 4: Operaciones avanzadas con NumPy
 # Crea una matriz de ventas con ventas_A, ventas_B, y ventas_C.
 stacked_v = np.vstack((ventas_A,ventas_B,ventas_C))
-
+print('Matriz de ventas concatenada:')
+print(stacked_v):x
 # Reorganiza la matriz con reshape en una nueva estructura de 3x4x3.
 ventas_reshaped = stacked_v.reshape(3,4,3)
-print(f'ventas_reshaped = {ventas_reshaped}')
+#  print(f'ventas_reshaped = {ventas_reshaped}')
 # Transpón la matriz de ventas.
 ventas_reshaped_T = stacked_v.T
-print(f'ventas_transpuesta = {ventas_reshaped_T}')
+#  print(f'ventas_transpuesta = {ventas_reshaped_T}')
 
 # Imprime la matriz original, la matriz reorganizada, y la matriz transpuesta.
-
-
 # Invertir arrays y aplanar matrices
+reversed_ventas_stacked_v = np.flip(stacked_v)
+print(reversed_ventas_stacked_v)
+
 # Invierte el orden de los elementos en cada fila de la matriz de ventas.
+
 # Aplana la matriz en un array unidimensional.
 # Imprime la matriz invertida y aplanada.
 
