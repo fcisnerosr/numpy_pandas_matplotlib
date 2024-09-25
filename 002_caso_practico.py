@@ -61,6 +61,7 @@ print(vector_sum)
     
 # Calcula el promedio de ventas por producto.
 largo_col = np.arange(stacked_v.shape[0])
+print(largo_col)
 vector_mean = np.zeros(len(largo_col))
 for fila in largo_col:
     vector_mean[fila] = np.mean(stacked_v[fila])
@@ -80,7 +81,7 @@ for num in largo_fila:
 # Crea una matriz de ventas con ventas_A, ventas_B, y ventas_C.
 stacked_v = np.vstack((ventas_A,ventas_B,ventas_C))
 print('Matriz de ventas concatenada:')
-print(stacked_v):x
+print(stacked_v)
 # Reorganiza la matriz con reshape en una nueva estructura de 3x4x3.
 ventas_reshaped = stacked_v.reshape(3,4,3)
 #  print(f'ventas_reshaped = {ventas_reshaped}')
@@ -91,19 +92,48 @@ ventas_reshaped_T = stacked_v.T
 # Imprime la matriz original, la matriz reorganizada, y la matriz transpuesta.
 # Invertir arrays y aplanar matrices
 reversed_ventas_stacked_v = np.flip(stacked_v)
-print(reversed_ventas_stacked_v)
+# print(reversed_ventas_stacked_v)
 
 # Invierte el orden de los elementos en cada fila de la matriz de ventas.
-
+matriz_filas_invertidas = np.zeros((3,12))
+for fila in largo_col:
+    fila_matriz = stacked_v[fila,:]
+    fila_inv = np.flip(fila_matriz)
+    for col in largo_fila:
+        matriz_filas_invertidas[fila,col] = fila_inv[col]
+    
 # Aplana la matriz en un array unidimensional.
-# Imprime la matriz invertida y aplanada.
+matriz_filas_invertidas_flat = matriz_filas_invertidas.flatten()
+print(matriz_filas_invertidas_flat)
 
 # Paso 5: Análisis de elementos únicos y sus conteos
 # Usa np.unique para obtener los elementos únicos y sus conteos de la matriz aplanada.
 # Imprime los elementos únicos y sus conteos.
+mat_unique_flat = np.unique(matriz_filas_invertidas_flat)
+print(mat_unique_flat)
+unique_elements, counts = np.unique(matriz_filas_invertidas, return_counts=True)
+#  # impresion en pantalla
+#  index = 0
+#  for elements in unique_elements:
+#      print(f'{elements} = {counts[index]}')
+#      index +=1
+
+#  # diccionario
+#  dicc = {}
+#  index = 0
+#  for elements in unique_elements:
+#      dicc[elements] = counts[index]
+#      index +=1
+#  print(dicc)
 
 # Paso 6: Indexación y slicing
 # Selecciona las ventas del primer trimestre (primeras tres columnas) para cada producto.
+trimestres = len(meses)/3
+ini = 0
+for trimestre in range(3,12+1,3):
+    print(trimestre)
+    ini +=3
+
 # Usa indexación booleana para seleccionar meses con ventas totales superiores a 800.
 # Imprime los meses y las ventas superiores a 800.
 
