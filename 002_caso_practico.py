@@ -128,15 +128,55 @@ unique_elements, counts = np.unique(matriz_filas_invertidas, return_counts=True)
 
 # Paso 6: Indexación y slicing
 # Selecciona las ventas del primer trimestre (primeras tres columnas) para cada producto.
-trimestres = len(meses)/3
+print(f'concatenada =')
+print(f'{stacked_v}')
 ini = 0
-for trimestre in range(3,12+1,3):
-    print(trimestre)
-    ini +=3
+cont = 0
+tensor_trim = np.zeros([4,3,3])
+for fin in range(3,12+1,3):
+    tensor_trim[cont,:,:] = stacked_v[:,ini:fin]
+    ini = ini+3
+    cont = cont+1
+
+primer_trim = tensor_trim[0,:,:]
+#  print('tensor_trim = ')
+#  print(tensor_trim)
+
+# para el primer trimestre en horizontal
+#  for fila in range(0,3):
+#      suma = np.sum(primer_trim[fila,:])
+#      print(suma)
 
 # Usa indexación booleana para seleccionar meses con ventas totales superiores a 800.
+#  suma_meses = np.zeros((0,len(meses)))
+suma_meses = np.zeros(len(meses))
+index = 0
+for col in range(0,len(meses)):
+    suma_meses[index] = np.sum(stacked_v[:,col])
+    index = index + 1
+#  print(suma_meses)
+
 # Imprime los meses y las ventas superiores a 800.
+bool_index = suma_meses > 800
+cont_mes = 0
+mes_con_mas_de = {}
+for mes in meses:
+    if bool_index[cont_mes] == True:
+        #  print(meses[cont_mes])
+        mes_con_mas_de[cont_mes] = meses[cont_mes]
+    cont_mes = cont_mes + 1
+print(mes_con_mas_de)
 
 # Selección avanzada
 # Selecciona las ventas de los meses con índices pares (0, 2, 4, 6, 8, 10) para cada producto.
+print(stacked_v)
+ventas_mes_par = np.zeros(6)
+cont = 0
+for pares in range(0,len(meses),2):
+    #  print(stacked_v[:,pares])
+    #  ventas_mes_par[cont] = stacked_v[:,pares]
+    ventas_mes_par[cont] = stacked_v[:,pares]
+    cont = cont+1
+print(ventas_mes_par)
+
 # Imprime las ventas correspondientes a los meses seleccionados.
