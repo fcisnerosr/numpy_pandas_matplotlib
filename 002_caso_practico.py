@@ -169,14 +169,13 @@ print(mes_con_mas_de)
 
 # Selección avanzada
 # Selecciona las ventas de los meses con índices pares (0, 2, 4, 6, 8, 10) para cada producto.
-print(stacked_v)
-ventas_mes_par = np.zeros(6)
+ventas_mes_par = np.zeros((6,3))
 cont = 0
 for pares in range(0,len(meses),2):
-    #  print(stacked_v[:,pares])
-    #  ventas_mes_par[cont] = stacked_v[:,pares]
+    print(stacked_v[:,pares])
     ventas_mes_par[cont] = stacked_v[:,pares]
     cont = cont+1
-print(ventas_mes_par)
 
 # Imprime las ventas correspondientes a los meses seleccionados.
+print(f'ventas con mes par = \n{ventas_mes_par}')
+
