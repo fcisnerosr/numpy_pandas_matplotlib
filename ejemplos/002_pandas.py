@@ -3,9 +3,8 @@ import numpy as np
 import os
 os.system('clear')
 
-path = '~/Documents/numpy_pandas_matplotlib/Online_Retail.csv'
+path = 'Online_Retail.csv'
 df = pd.read_csv(path,encoding='windows-1252')
-print(df.head())
 #  data_excel = pd.read_excel(path)
 #  data_json = pd.read_json(path)
 
@@ -22,4 +21,4 @@ dicc = [{'ID':1,
     'Name':'Ana',
     'Age':24}]
 df_from_dicc = pd.DataFrame(dicc,columns=['ID','Name','Age'])
-#  print(df_from_dicc)
+print(df_from_dicc)
