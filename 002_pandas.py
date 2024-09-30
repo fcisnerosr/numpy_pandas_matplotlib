@@ -23,3 +23,4 @@ dicc = [{'ID':1,
     'Age':24}]
 df_from_dicc = pd.DataFrame(dicc,columns=['ID','Name','Age'])
 #  print(df_from_dicc)
+
