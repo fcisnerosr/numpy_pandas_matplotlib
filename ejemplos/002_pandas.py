@@ -6,13 +6,21 @@ os.system('clear')
 path = '~/Documents/numpy_pandas_matplotlib/Online_Retail.csv'
 df = pd.read_csv(path,encoding='windows-1252')
 num_rows, num_columns = df.shape
+print(df.columns)
+price = df['UnitPrice']
+print(df.tail())
+#  print(price)
+#  mean = price.mean()
+#  print(mean)
+#  suma = price.sum()
+#  print(suma)
 #  print(f'filas = {num_rows}')
 #  print(f'columnas = {num_columns}')
 #  print(df)
 #  print(df.head())
 #  print(df.head(8))
-print(df.sample(2))
-print(df.tail())
+#  print(df.sample(2))
+#  print(df.tail())
 #  print(df.columns)
 series_priced = df['Quantity']
 #  print(series_priced)
