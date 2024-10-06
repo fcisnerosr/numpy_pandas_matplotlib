@@ -5,10 +5,11 @@ os.system('clear')
 
 path = '~/Documents/numpy_pandas_matplotlib/Online_Retail.csv'
 df = pd.read_csv(path,encoding='windows-1252')
-num_rows, num_columns = df.shape
+print(df)
+#  num_rows, num_columns = df.shape
 print(df.columns)
-price = df['UnitPrice']
-print(df.tail())
+#  price = df['UnitPrice']
+#  print(df.tail())
 #  print(price)
 #  mean = price.mean()
 #  print(mean)
@@ -56,3 +57,36 @@ df_from_dicc = pd.DataFrame(dicc,columns=['ID','Name','Age'])
 
 #  columns = df.columns
 #  print(columns)
+
+# iloc y loc
+first_row = df.iloc[1]
+#  print(first_row)
+first_five_rows = df.iloc[:5]
+#  print('primeras 5 filas')
+#  print(first_five_rows)
+six_to_eigth_rows = df.iloc[6:8]
+#  print('de las 5 a la 7')
+#  print(six_to_eigth_rows)
+#  print('impresion completa del dataframe')
+#  print(df)
+subset = df.iloc[:3,:2] 
+#  print('tres primeras filas, dos primeras columnas')
+#  print(subset)
+value = df.iloc[0,4] 
+#  print(value)
+# loc
+row_index_three = df.loc[3]
+#  print(row_index_three)
+row_index_zero_to_four = df.loc[:2]
+#  print(row_index_zero_to_four)
+col_date = df.loc[:,'InvoiceDate']
+col_stock_date_unitprice_0 = df.loc[0,['StockCode','InvoiceDate','UnitPrice']]
+#  print(col_stock_date_unitprice_0)
+col_stock_date_unitprice_02 = df.loc[0:2,['StockCode','InvoiceDate','UnitPrice']]
+#  print(col_stock_date_unitprice_02)
+france_unitprice = df.loc[df['Country']=='France',['Country','UnitPrice']]
+#  print(france_col)
+france_unitprice_3 = df.loc[df['Country']=='France',['Country','UnitPrice']].head(3)
+print(france_unitprice_3)
+france_unitprice_3 = df.loc[df['Country']=='France',['Country','UnitPrice']].tail(3)
+
