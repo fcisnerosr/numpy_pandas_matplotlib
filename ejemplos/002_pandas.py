@@ -91,22 +91,57 @@ france_unitprice_3 = df.loc[df['Country']=='France',['Country','UnitPrice']].hea
 # print(france_unitprice_3)
 france_unitprice_3 = df.loc[df['Country']=='France',['Country','UnitPrice']].tail(3)
 
-# Datos faltantes
+# datos faltantes
 missing_data = df.isna()
 #  print(missing_data.head(10))
 missing_data_count = df.isna().sum()
-print(f'Conteo de datos faltantes por columna: \n{missing_data_count}')
+#  print(f'conteo de datos faltantes por columna: \n{missing_data_count}')
 no_missing_rows = df.dropna()
-print(f'datos sin filas con valores faltantes:\n {no_missing_rows}')
+#  print(f'datos sin filas con valores faltantes:\n {no_missing_rows}')
+no_missing_columnas = df.dropna(axis=1)
+#  print(f'datos sin filas con flalores faltantes: \n{no_missing_columnas}')
+df_filled_zeros = df.fillna(0)
+#  print(df_filled_zeros)
+df_filled_zeros_count = df_filled_zeros.isna().sum()
+#  print(df_filled_zeros_count)
+
+mean_unit_price = df['UnitPrice'].mean()
+df_filled_mean = df['UnitPrice'].fillna(mean_unit_price)
+#  print(df_filled_mean)
+
+# Manipulación de columnas
+#  print(df)
+df['TotalPrice'] = df['Quantity'] * df['UnitPrice']
+#  print(df.head(10))
+df['HighValue'] = df['TotalPrice']>16
+#  print(df['HighValue'].head(10))
+# Tipos de datos en columnas
+#  print(df.info())
+print(df['InvoiceDate'])
+df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'], format='%m/%d/%y %H:%M')
+#  print(df.info())
+print(df['InvoiceDate'])
+print(df['UnitPrice'].head())
+df['DiscountedPrice'] = df['UnitPrice'].apply(lambda x:x*0.9)
+# funcion para probar applay sobre nuestro dataframe
+def categorize_price(price):
+    if price > 50:
+        return 'High'
+    elif price < 20:
+        return 'Medium'
+    else:
+        return 'Low'
+
+df['PriceCategory'] = df['UnitPrice'].apply(categorize_price)
+print(df.head(100))
 
 
-# Crear un DataFrame de ejemplo
-data = {'name': ['Alice', 'Bob', None, 'Dave', 'Eve'],
-        'age': [24, None, 35, 46, None],
-        'gender': ['F', 'M', 'M', 'M', 'F']}
-df = pd.DataFrame(data)
-print(df)
-
-# Eliminar filas donde al menos un elemento es NaN
-df_cleaned = df.dropna()
-print(f'\nDatos limpios \n{df_cleaned}')
+#  # Crear un DataFrame de ejemplo
+#  data = {'name': ['Alice', 'Bob', None, 'Dave', 'Eve'],
+#          'age': [24, None, 35, 46, None],
+#          'gender': ['F', 'M', 'M', 'M', 'F']}
+#  df = pd.DataFrame(data)
+#  #  print(df)
+#  # Eliminar filas donde al menos un elemento es NaN
+#  df_cleaned = df.dropna()
+#  print(f'\nDatos limpios \n{df_cleaned}')
