@@ -117,11 +117,11 @@ df['HighValue'] = df['TotalPrice']>16
 #  print(df['HighValue'].head(10))
 # Tipos de datos en columnas
 #  print(df.info())
-print(df['InvoiceDate'])
+#  print(df['InvoiceDate'])
 df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'], format='%m/%d/%y %H:%M')
 #  print(df.info())
-print(df['InvoiceDate'])
-print(df['UnitPrice'].head())
+#  print(df['InvoiceDate'])
+#  print(df['UnitPrice'].head())
 df['DiscountedPrice'] = df['UnitPrice'].apply(lambda x:x*0.9)
 # funcion para probar applay sobre nuestro dataframe
 def categorize_price(price):
@@ -134,6 +134,43 @@ def categorize_price(price):
 
 df['PriceCategory'] = df['UnitPrice'].apply(categorize_price)
 print(df.head(100))
+
+# Groupby
+country_cont = df['Country'].value_counts()
+#  print(country_cont)
+country_group = df.groupby('Country')['Quantity'].sum()
+print(country_group)
+country_stats = df.groupby('Country')['UnitPrice'].agg(['mean','sum'])
+print(country_stats)
+country_stock_group = df.groupby(['Country','StockCode'])['Quantity'].sum()
+print(country_stock_group)
+def total_revenue(group):
+    return (group['Quantity'] * group['UnitPrice']).sum()
+
+revenue_per_country = df.groupby('Country').apply(total_revenue)
+print(revenue_per_country)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #  # Crear un DataFrame de ejemplo
