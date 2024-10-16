@@ -133,52 +133,47 @@ def categorize_price(price):
         return 'Low'
 
 df['PriceCategory'] = df['UnitPrice'].apply(categorize_price)
-print(df.head(100))
+#  print(df.head(100))
 
 # Groupby
 country_cont = df['Country'].value_counts()
 #  print(country_cont)
 country_group = df.groupby('Country')['Quantity'].sum()
-print(country_group)
+#  print(country_group)
 country_stats = df.groupby('Country')['UnitPrice'].agg(['mean','sum'])
-print(country_stats)
+#  print(country_stats)
 country_stock_group = df.groupby(['Country','StockCode'])['Quantity'].sum()
-print(country_stock_group)
+#  print(country_stock_group)
 def total_revenue(group):
     return (group['Quantity'] * group['UnitPrice']).sum()
 
 revenue_per_country = df.groupby('Country').apply(total_revenue)
-print(revenue_per_country)
+#  print(revenue_per_country)
 
+# Filtrado de datos
+# Convierte la columna 'InvoiceData' en una columna con valores de fecha, días y horas
+df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
 
+# Eliminar filas con valores faltantes de CustomerID y InvoiceData, el argumento 'inplace=True' modifica el df a partir de esta línea de código sin asignarlo a una nueva variable
+df.dropna(subset=['CustomerID', 'InvoiceDate'], inplace=True)
 
+# Crear una nueva columna 'TotalPrice', que es el producto de cada elemento de 'Quantity' y 'UnitPrice'
+df['TotalPrice'] = df['Quantity'] * df['UnitPrice']
 
+# Imprimir las primeras cinco filas del DataFrame
+#  print(df.head())
 
+uk_sales = df[df['Country'] == 'United Kingdom']
+#  print(uk_sales)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#  # Crear un DataFrame de ejemplo
-#  data = {'name': ['Alice', 'Bob', None, 'Dave', 'Eve'],
-#          'age': [24, None, 35, 46, None],
-#          'gender': ['F', 'M', 'M', 'M', 'F']}
-#  df = pd.DataFrame(data)
-#  #  print(df)
-#  # Eliminar filas donde al menos un elemento es NaN
-#  df_cleaned = df.dropna()
-#  print(f'\nDatos limpios \n{df_cleaned}')
+# Ajustar la opción para mostrar todas las columnas
+high_quantity_sales = df[df['Quantity']>10]
+pd.set_option('display.max_columns', None)
+#  print(f'high_quantity_sales =\n {high_quantity_sales}')
+uk_high_quantity_sales = df[(df['Country'] == 'United Kingdom') & (df['Quantity'] > 100)]
+#  print(f'Uk high quantity sales = {uk_high_quantity_sales}')
+sales_2011 = df[df['InvoiceDate'].dt.year == 2011]
+print(sales_2011)
+sales_dec_2010 = df[(df['InvoiceDate'].dt.year == 2010) & 
+                    (df['InvoiceDate'].dt.month == 12)] 
+print(sales_dec_2010)
