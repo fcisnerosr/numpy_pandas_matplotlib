@@ -3,7 +3,7 @@ import numpy as np
 import os
 os.system('clear')
 
-path = '~/Documents/numpy_pandas_matplotlib/Online_Retail.csv'
+#  path = '~/Documents/numpy_pandas_matplotlib/Online_Retail.csv'
 path = '~/numpy_pandas_matplotlib/Online_Retail.csv'
 df = pd.read_csv(path,encoding='windows-1252')
 # print(df)
@@ -148,7 +148,7 @@ def total_revenue(group):
     return (group['Quantity'] * group['UnitPrice']).sum()
 
 revenue_per_country = df.groupby('Country').apply(total_revenue)
-#  print(revenue_per_country)
+print(revenue_per_country)
 
 # Filtrado de datos
 # Convierte la columna 'InvoiceData' en una columna con valores de fecha, días y horas
@@ -173,7 +173,51 @@ pd.set_option('display.max_columns', None)
 uk_high_quantity_sales = df[(df['Country'] == 'United Kingdom') & (df['Quantity'] > 100)]
 #  print(f'Uk high quantity sales = {uk_high_quantity_sales}')
 sales_2011 = df[df['InvoiceDate'].dt.year == 2011]
-print(sales_2011)
+#  print(sales_2011)
 sales_dec_2010 = df[(df['InvoiceDate'].dt.year == 2010) & 
                     (df['InvoiceDate'].dt.month == 12)] 
-print(sales_dec_2010)
+#  print(sales_dec_2010)
+
+# Pivot tables y reshape
+pivot_table = pd.pivot_table(df, values = 'Quantity', index = 'Country',
+                                columns = 'StockCode', aggfunc = 'sum')
+#  print(pivot_table)
+#  mean_qty_by_country_product_customer = pd.pivot_table(df, values = 'Quantity', index = 'Country', columns = ['StockCode', 'CustomerID'], aggfunc = 'mean')
+#  print(mean_qty_by_country_product_customer)
+
+#  df = pd.DataFrame({
+#      'A': ['foo', 'bar', 'baz'],
+#      'B': [1, 2, 3],
+#      'C': [4, 5, 6]
+#  })
+
+df_stacked = df.stack()
+print(df_stacked)
+
+#  df_unstacked = df_stacked.unstack()
+#  print(df_unstacked)
+
+# Fusión de Data Frames
+# Crear DataFrames de ejemplo
+df1 = pd.DataFrame({
+    'key': ['A', 'B', 'C'],
+    'value1': [1, 2, 3]
+})
+
+df2 = pd.DataFrame({
+    'key': ['B', 'C', 'D'],
+    'value2': [4, 5, 6]
+})
+
+print(df1)
+print(df2)
+
+inner_merged = pd.merge(df1, df2, on = 'key', how = 'inner')
+print(inner_merged)
+outer_merged = pd.merge(df1, df2, on = 'key', how = 'outer')
+print(outer_merged)
+left_merged = pd.merge(df1, df2, on = 'key', how = 'left')
+print(left_merged)
+right_merged = pd.merge(df1, df2, on = 'key', how = 'right')
+print(right_merged)
+
