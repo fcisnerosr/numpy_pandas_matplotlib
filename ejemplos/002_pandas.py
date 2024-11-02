@@ -6,7 +6,7 @@ os.system('clear')
 #  path = '~/Documents/numpy_pandas_matplotlib/Online_Retail.csv'
 path = '~/numpy_pandas_matplotlib/Online_Retail.csv'
 df = pd.read_csv(path,encoding='windows-1252')
-# print(df)
+#  print(df)
 #  num_rows, num_columns = df.shape
 # print(df.columns)
 #  price = df['UnitPrice']
@@ -148,7 +148,7 @@ def total_revenue(group):
     return (group['Quantity'] * group['UnitPrice']).sum()
 
 revenue_per_country = df.groupby('Country').apply(total_revenue)
-print(revenue_per_country)
+#  print(revenue_per_country)
 
 # Filtrado de datos
 # Convierte la columna 'InvoiceData' en una columna con valores de fecha, días y horas
@@ -192,32 +192,85 @@ pivot_table = pd.pivot_table(df, values = 'Quantity', index = 'Country',
 #  })
 
 df_stacked = df.stack()
-print(df_stacked)
+#  print(df_stacked)
 
 #  df_unstacked = df_stacked.unstack()
 #  print(df_unstacked)
 
 # Fusión de Data Frames
 # Crear DataFrames de ejemplo
-df1 = pd.DataFrame({
-    'key': ['A', 'B', 'C'],
-    'value1': [1, 2, 3]
-})
+#  df1 = pd.DataFrame({
+#      'key': ['A', 'B', 'C'],
+#      'value1': [1, 2, 3]
+#  })
+#
+#  df2 = pd.DataFrame({
+#      'key': ['B', 'C', 'D'],
+#      'value2': [4, 5, 6]
+#  })
+#
+#  print(df1)
+#  print(df2)
+#
+#  inner_merged = pd.merge(df1, df2, on = 'key', how = 'inner')
+#  print(inner_merged)
+#  outer_merged = pd.merge(df1, df2, on = 'key', how = 'outer')
+#  print(outer_merged)
+#  left_merged = pd.merge(df1, df2, on = 'key', how = 'left')
+#  print(left_merged)
+#  right_merged = pd.merge(df1, df2, on = 'key', how = 'right')
+#  print(right_merged)
+#  df3 = pd.DataFrame({
+#      'A': ['A0', 'A1', 'A2'],
+#      'B': ['B0', 'B1', 'B2']
+#  })
+#
+#  df4 = pd.DataFrame({
+#      'A': ['A3', 'A4', 'A5'],
+#      'B': ['B3', 'B4', 'B5']
+#  })
+#
+#  print(df3)
+#  print(df4)
+#  vertical_concat = pd.concat([df3, df4])
+#  print(vertical_concat)
+#  horizontal_concat = pd.concat([df3, df4], axis=1)
+#  print(horizontal_concat)
+#  df5 = pd.DataFrame({
+#      'A': ['A0', 'A1', 'A2'],
+#      'B': ['B0', 'B1', 'B2']
+#  }, index=['K0', 'K1', 'K2'])
+#
+#  df6 = pd.DataFrame({
+#      'C': ['C0', 'C1', 'C2'],
+#      'D': ['D0', 'D1', 'D2']
+#  }, index=['K0', 'K2', 'K3'])
+#
+#  print(df5)
+#  print(df6)
+#  joined = df5.join(df6, how='inner')
+#  print(joined)
 
-df2 = pd.DataFrame({
-    'key': ['B', 'C', 'D'],
-    'value2': [4, 5, 6]
-})
-
-print(df1)
-print(df2)
-
-inner_merged = pd.merge(df1, df2, on = 'key', how = 'inner')
-print(inner_merged)
-outer_merged = pd.merge(df1, df2, on = 'key', how = 'outer')
-print(outer_merged)
-left_merged = pd.merge(df1, df2, on = 'key', how = 'left')
-print(left_merged)
-right_merged = pd.merge(df1, df2, on = 'key', how = 'right')
-print(right_merged)
-
+# Series temporales
+#  df.info()
+df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
+#  df.info()
+df.dropna(subset=['InvoiceDate'], inplace=True)
+df.set_index('InvoiceDate')
+df.set_index('InvoiceDate', inplace=True)
+df['Year'] = df.index.year
+#  print(df['Year'])
+df['Month'] = df.index.month
+#  print(df['Month'])
+df['Day'] = df.index.day
+#  print(df['Day'])
+df['Weekdy'] = df.index.weekday
+#  print(df['Weekdy'])
+df['Hour'] = df.index.hour
+#  print(df['Hour'])
+df = df.drop(columns = ['Weekdy'])
+#  print(df)
+df['Weekday'] = df.index.weekday
+#  print(df)
+df_2011 = df.loc['2011']
+print(df_2011)
