@@ -273,4 +273,11 @@ df = df.drop(columns = ['Weekdy'])
 df['Weekday'] = df.index.weekday
 #  print(df)
 df_2011 = df.loc['2011']
-print(df_2011)
+df_2011_dec = df.loc['2011-12']
+#  print(df_2011_dec.head())
+df_dec_range = df.loc['2010-12-01':'2010-12-02']
+print(df_dec_range)
+date_range_new = pd.date_range(start='2024-01-01', end='2024-12-31', freq = 'D')
+print(date_range_new)
+df_dates = pd.DataFrame(date_range_new, columns=['Date'])
+print(df_dates.head())
