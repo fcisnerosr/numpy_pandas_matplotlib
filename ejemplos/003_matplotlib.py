@@ -13,7 +13,7 @@ month = np.array(['E', 'F', 'M', 'A', 'Ma'])
 #  print(matplotlib.__version__)
 #  print(matplotlib.__file__)
 
-sales = np.array([20,25,30,28,35])
+#  sales = np.array([20,25,30,28,35])
 
 # Configurar el tamaño del grafico
 plt.figure(figsize=(8,6))
@@ -45,11 +45,23 @@ exam_scores_student_2 = [50,58,63,69,74,78,83]
 # Crear grafico de dispersion de dos estudiantes
 #  plt.scatter(hours, exam_scores_student_1, marker='o', color='green', linestyle='-', label='Estudiante 1')
 #  plt.scatter(hours, exam_scores_student_2, marker='o', color='red', linestyle='--', label='Estudiante 2')
-plt.plot(hours, exam_scores_student_2, marker='s', color='blue', linestyle='--', linewidth=2, label='Estudiante 2')
-plt.plot(hours, exam_scores_student_1, marker='o', color='red', linestyle='--', linewidth=2, label='Estudiante 2')
-plt.title('Relacion entre horas estudiadas y el puntaje en examenes')
-plt.xlabel('Horas')
-plt.ylabel('Puntaje')
+#  plt.plot(hours, exam_scores_student_2, marker='s', color='blue', linestyle='--', linewidth=2, label='Estudiante 2')
+#  plt.plot(hours, exam_scores_student_1, marker='o', color='red', linestyle='--', linewidth=2, label='Estudiante 2')
+#  plt.title('Relacion entre horas estudiadas y el puntaje en examenes')
+#  plt.xlabel('Horas')
+#  plt.ylabel('Puntaje')
+#
+#  plt.legend()
+#  plt.show()
 
+# Graficas de barras y de pastel
+categories = ['Producto A', 'Producto B', 'Producto C']
+sales = [120, 150, 90]
+# Barras verticales
+plt.bar(categories, sales, color='skyblue', label='Ventas mensales')
+plt.annotate('Máximo de ventas',xy=('Producto B',150))
+plt.title('Ventas de productos en un mes')
+plt.xlabel('Productos')
+plt.ylabel('Ventas')
 plt.legend()
 plt.show()
