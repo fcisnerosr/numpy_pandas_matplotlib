@@ -6,19 +6,11 @@ os.system('clear')
 
 
 # Figura 1
-month = np.array(['E', 'F', 'M', 'A', 'Ma'])
-#  print(month)
-
-#  import matplotlib
-#  print(matplotlib.__version__)
-#  print(matplotlib.__file__)
-
+#  month = np.array(['E', 'F', 'M', 'A', 'Ma'])
 #  sales = np.array([20,25,30,28,35])
-
-# Configurar el tamaño del grafico
-plt.figure(figsize=(8,6))
-
-#  # Crear el grafico
+#
+#  plt.figure(figsize=(8,6))
+#
 #  plt.plot(month,sales, marker='o', color='blue')
 #  plt.title('Ventas mensuales de un producto')
 #  plt.xlabel('Meses')
@@ -36,15 +28,15 @@ plt.figure(figsize=(8,6))
 #  plt.ylabel('Puntaje')
 #
 #  plt.show()
-
+#
 # Personalización de figuras
-hours = [2,3,4,5,6,7,8]
-exam_scores_student_1 = [55,60,65,70,75,80,85]
-exam_scores_student_2 = [50,58,63,69,74,78,83]
-
-# Crear grafico de dispersion de dos estudiantes
-#  plt.scatter(hours, exam_scores_student_1, marker='o', color='green', linestyle='-', label='Estudiante 1')
-#  plt.scatter(hours, exam_scores_student_2, marker='o', color='red', linestyle='--', label='Estudiante 2')
+#  hours = [2,3,4,5,6,7,8]
+#  exam_scores_student_1 = [55,60,65,70,75,80,85]
+#  exam_scores_student_2 = [50,58,63,69,74,78,83]
+#
+#  # Crear grafico de dispersion de dos estudiantes
+#  #  plt.scatter(hours, exam_scores_student_1, marker='o', color='green', linestyle='-', label='Estudiante 1')
+#  #  plt.scatter(hours, exam_scores_student_2, marker='o', color='red', linestyle='--', label='Estudiante 2')
 #  plt.plot(hours, exam_scores_student_2, marker='s', color='blue', linestyle='--', linewidth=2, label='Estudiante 2')
 #  plt.plot(hours, exam_scores_student_1, marker='o', color='red', linestyle='--', linewidth=2, label='Estudiante 2')
 #  plt.title('Relacion entre horas estudiadas y el puntaje en examenes')
@@ -59,9 +51,13 @@ categories = ['Producto A', 'Producto B', 'Producto C']
 sales = [120, 150, 90]
 # Barras verticales
 plt.bar(categories, sales, color='skyblue', label='Ventas mensales')
-plt.annotate('Máximo de ventas',xy=('Producto B',150))
+plt.annotate(
+    'Máximo de ventas', 
+    xy=('Producto B', 150),  # Asegúrate de que 'Producto B' sea un valor x válido
+    arrowprops=dict(facecolor='black', shrink=0.05)
+)
 plt.title('Ventas de productos en un mes')
 plt.xlabel('Productos')
 plt.ylabel('Ventas')
-plt.legend()
+#  plt.legend()
 plt.show()
