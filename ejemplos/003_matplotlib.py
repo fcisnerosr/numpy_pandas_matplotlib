@@ -50,14 +50,15 @@ os.system('clear')
 categories = ['Producto A', 'Producto B', 'Producto C']
 sales = [120, 150, 90]
 # Barras verticales
-plt.bar(categories, sales, color='skyblue', label='Ventas mensales')
-plt.annotate(
-    'Máximo de ventas', 
-    xy=('Producto B', 150),  # Asegúrate de que 'Producto B' sea un valor x válido
-    arrowprops=dict(facecolor='black', shrink=0.05)
-)
+plt.barh(categories, sales, color='skyblue', label='Ventas mensales')
+#  plt.bar(categories, sales, color='skyblue', label='Ventas mensales')
+#  plt.annotate(
+#      'Máximo de ventas',
+#      xy=('Producto B', 150), xytext=('Producto C', 160),
+#      arrowprops=dict(facecolor='black', shrink=0.05)
+#  )
 plt.title('Ventas de productos en un mes')
-plt.xlabel('Productos')
-plt.ylabel('Ventas')
+plt.ylabel('Productos')
+plt.xlabel('Ventas')
 #  plt.legend()
 plt.show()
