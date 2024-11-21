@@ -46,19 +46,54 @@ os.system('clear')
 #  plt.legend()
 #  plt.show()
 
-# Graficas de barras y de pastel
-categories = ['Producto A', 'Producto B', 'Producto C']
-sales = [120, 150, 90]
-# Barras verticales
-plt.barh(categories, sales, color='skyblue', label='Ventas mensales')
-#  plt.bar(categories, sales, color='skyblue', label='Ventas mensales')
-#  plt.annotate(
-#      'Máximo de ventas',
-#      xy=('Producto B', 150), xytext=('Producto C', 160),
-#      arrowprops=dict(facecolor='black', shrink=0.05)
-#  )
-plt.title('Ventas de productos en un mes')
-plt.ylabel('Productos')
-plt.xlabel('Ventas')
+#  categories = ['Producto A', 'Producto B', 'Producto C']
+#  sales = [120, 150, 90]
+#  # Barras verticales
+#  plt.barh(categories, sales, color='skyblue', label='Ventas mensales')
+#  #  plt.bar(categories, sales, color='skyblue', label='Ventas mensales')
+#  #  plt.annotate(
+#  #      'Máximo de ventas',
+#  #      xy=('Producto B', 150), xytext=('Producto C', 160),
+#  #      arrowprops=dict(facecolor='black', shrink=0.05)
+#  #  )
+#  plt.title('Ventas de productos en un mes')
+#  plt.ylabel('Productos')
+#  plt.xlabel('Ventas')
 #  plt.legend()
+#  plt.show()
+
+# Graficas de barras y de pastel
+#  products = ['Producto A', 'Producto B', 'Producto C']
+#  market_share = [50, 35, 15]
+#  plt.pie(
+#      market_share,
+#      labels=products,
+#      autopct='%1.1f%%',
+#      startangle=140,
+#      colors=['gold', 'lightcoral', 'orange']
+#  )
+#  plt.title('Participación de Mercado por Producto')
+#  plt.axis('equal')
+#  plt.show()
+
+# Histogramas
+#  data = np.random.normal(170, 10, 200)
+#  plt.hist(data, color='salmon', bins=10, edgecolor='black', alpha=0.6)
+#  plt.title('Distribucion de alturas')
+#  plt.xlabel('Altura (cm)')
+#  plt.ylabel('Densidad')
+#  plt.show()
+
+np.random.seed(0)
+
+ages = [np.random.normal(35, 5, 200),
+        np.random.normal(40, 5, 200),
+        np.random.normal(35, 5, 200)]
+#  print(ages)
+plt.boxplot(ages, patch_artist=True, notch=True, vert=True, labels=['Grupo 1', 'Grupo 2', 'Grupo 3'])
+plt.title('Distribución de edades por grupo')
+plt.xlabel('Grupo')
+plt.ylabel('Edad (años)')
 plt.show()
+
+
