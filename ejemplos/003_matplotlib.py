@@ -90,7 +90,7 @@ ages = [np.random.normal(35, 5, 200),
         np.random.normal(40, 5, 200),
         np.random.normal(35, 5, 200)]
 #  print(ages)
-plt.boxplot(ages, patch_artist=True, notch=True, vert=True, labels=['Grupo 1', 'Grupo 2', 'Grupo 3'])
+plt.boxplot(ages, patch_artist=True, notch=False, vert=True, tick_labels=['Grupo 1', 'Grupo 2', 'Grupo 3'])
 plt.title('Distribución de edades por grupo')
 plt.xlabel('Grupo')
 plt.ylabel('Edad (años)')
