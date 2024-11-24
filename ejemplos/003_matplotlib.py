@@ -1,6 +1,9 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.dates import DateFormatter, AutoDateLocator
+import pandas as pd
+
 
 os.system('clear')
 
@@ -84,16 +87,26 @@ os.system('clear')
 #  plt.ylabel('Densidad')
 #  plt.show()
 
-np.random.seed(0)
+# Bloxplot
+#  np.random.seed(0)
+#  ages = [np.random.normal(35, 5, 200),
+#          np.random.normal(40, 5, 200),
+#          np.random.normal(35, 5, 200)]
+#  #  print(ages)
+#  plt.boxplot(ages, patch_artist=True, notch=False, vert=True, tick_labels=['Grupo 1', 'Grupo 2', 'Grupo 3'])
+#  plt.title('Distribución de edades por grupo')
+#  plt.xlabel('Grupo')
+#  plt.ylabel('Edad (años)')
+#  plt.show()
 
-ages = [np.random.normal(35, 5, 200),
-        np.random.normal(40, 5, 200),
-        np.random.normal(35, 5, 200)]
-#  print(ages)
-plt.boxplot(ages, patch_artist=True, notch=False, vert=True, tick_labels=['Grupo 1', 'Grupo 2', 'Grupo 3'])
-plt.title('Distribución de edades por grupo')
-plt.xlabel('Grupo')
-plt.ylabel('Edad (años)')
+dates = pd.date_range(start= '2023-01-01', periods=100) 
+values = np.random.rand(100).cumsum()
+data = pd.DataFrame({'Date': dates, 'Value': values})
+print(data)
+fig, ax = plt.subplots(figsize=(12,6))
+ax.plot(data['Date'], data['Value'], color='green')
+plt.xticks(rotation=45)
+plt.title('Serie de tiempo con formato en las fechas')
+plt.xlabel('Date')
+plt.ylabel('Value')
 plt.show()
-
-
