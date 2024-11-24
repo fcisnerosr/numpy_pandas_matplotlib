@@ -99,6 +99,7 @@ os.system('clear')
 #  plt.ylabel('Edad (años)')
 #  plt.show()
 
+# Series temporates con matplotlib
 dates = pd.date_range(start= '2023-01-01', periods=100) 
 values = np.random.rand(100).cumsum()
 data = pd.DataFrame({'Date': dates, 'Value': values})
