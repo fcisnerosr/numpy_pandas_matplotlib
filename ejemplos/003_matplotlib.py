@@ -103,6 +103,21 @@ os.system('clear')
 dates = pd.date_range(start= '2023-01-01', periods=100) 
 values = np.random.rand(100).cumsum()
 data = pd.DataFrame({'Date': dates, 'Value': values})
+#  fig, ax = plt.subplots(figsize=(12,6))
+#  ax.plot(data['Date'], data['Value'], color='green')
+#  plt.xticks(rotation=45)
+#  plt.title('Serie de tiempo con formato en las fechas')
+#  plt.xlabel('Date')
+#  plt.ylabel('Value')
+#  plt.show()
+
+path = '~/numpy_pandas_matplotlib/Online_Retail.csv'
+df = pd.read_csv(path,encoding='windows-1252')
+pd.set_option('display.max_columns', None)
+df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'], format='%m/%d/%y %H:%M')
+date = df['InvoiceDate'].iloc[0:500]
+sales= df['StockCode'].iloc[0:500]
+data = pd.DataFrame({'Date': date, 'Value': sales})
 print(data)
 fig, ax = plt.subplots(figsize=(12,6))
 ax.plot(data['Date'], data['Value'], color='green')
