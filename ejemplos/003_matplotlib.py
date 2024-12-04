@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.dates import DateFormatter, AutoDateLocator
 import pandas as pd
+import matplotblib.gridspec as gridspec
 
 
 os.system('clear')
@@ -111,18 +112,45 @@ data = pd.DataFrame({'Date': dates, 'Value': values})
 #  plt.ylabel('Value')
 #  plt.show()
 
-path = '~/numpy_pandas_matplotlib/Online_Retail.csv'
-df = pd.read_csv(path,encoding='windows-1252')
-pd.set_option('display.max_columns', None)
-df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'], format='%m/%d/%y %H:%M')
-date = df['InvoiceDate'].iloc[0:500]
-sales= df['StockCode'].iloc[0:500]
-data = pd.DataFrame({'Date': date, 'Value': sales})
-print(data)
-fig, ax = plt.subplots(figsize=(12,6))
-ax.plot(data['Date'], data['Value'], color='green')
-plt.xticks(rotation=45)
-plt.title('Serie de tiempo con formato en las fechas')
-plt.xlabel('Date')
-plt.ylabel('Value')
-plt.show()
+# mi ejemplo de ventas
+#  path = '~/numpy_pandas_matplotlib/Online_Retail.csv'
+#  df = pd.read_csv(path,encoding='windows-1252')
+#  pd.set_option('display.max_columns', None)
+#  df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'], format='%m/%d/%y %H:%M')
+#  date = df['InvoiceDate'].iloc[0:500]
+#  sales= df['StockCode'].iloc[0:500]
+#  data = pd.DataFrame({'Date': date, 'Value': sales})
+#  print(data)
+#  fig, ax = plt.subplots(figsize=(12,6))
+#  ax.plot(data['Date'], data['Value'], color='green')
+#  plt.xticks(rotation=45)
+#  plt.title('Serie de tiempo con formato en las fiechas')
+#  plt.xlabel('Date')
+#  plt.ylabel('Value')
+#  plt.show()
+
+# Ejemplo de ventas del profe Platzi
+#  dates = pd.date_range(start='2023-01-01', periods=12, freq='ME')
+#  sales = np.random.randint(1000, 5000, size=12)
+#  sales_data = pd.DataFrame({'Date': dates, 'Sales': sales})
+#  plt.plot(sales_data['Date'],sales_data['Sales'],marker='o',
+#      linestyle = '-', label='Ventas mensuales')
+#  plt.xticks(rotation=45)
+#  plt.title('Analisis de ventas mensuales')
+#  plt.xlabel('Date')
+#  plt.ylabel('Sales')
+#  plt.tight_layout()
+#  plt.show()
+
+# Gridspec
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+data = np.random.randn(100)
+gs = gridspec.GridSpec(2,2,height_ratios=[2,1],with_ratios=[1,1])
+fig = plt.figure(figsize = (10,8))
+# primer subplot gr
+ax1 = fig.add_subplot(gs[0,:])
+ax1.plt(x,y, color='blue')
+ax1.set_title('Seno de X')
+ax1.set_xlabel('x')
+ax1.set_ylabel('sex x')
