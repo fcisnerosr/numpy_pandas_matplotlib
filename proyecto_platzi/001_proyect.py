@@ -4,8 +4,8 @@ import os
 os.system('clear')
 
 # Cargar el dataset
-#  file_path = '~/numpy_pandas_matplotlib/proyecto_platzi/Online_Retail.csv'
-file_path = '~/Documents/numpy_pandas_matplotlib/proyecto_platzi/Online_Retail.csv'
+file_path = '~/numpy_pandas_matplotlib/proyecto_platzi/Online_Retail.csv'
+#  file_path = '~/Documents/numpy_pandas_matplotlib/proyecto_platzi/Online_Retail.csv'
 data = pd.read_csv(file_path, encoding='windows-1252')
 pd.set_option('display.max_columns', None)
 #  print(data.info())
@@ -19,9 +19,6 @@ for col, values in unique_values.items():
     print(f'Columna: {col}')
     print(f'Numero de valores: {len(values)}')
     print(f'Valores únicos: {values[:10]}')
-<<<<<<< HEAD
-    print('-'*50)
-=======
     print('-'*100)
 
 # Limpieza de datos
@@ -41,5 +38,12 @@ print(data_cleaned.info())
 data_cleaned['Year'] = data_cleaned['InvoiceDate'].dt.year
 data_cleaned['Month'] = data_cleaned['InvoiceDate'].dt.month
 print(data_cleaned.head())
+sales_by_year = data_cleaned.groupby('Year')['TotalAmount'].sum()
+print(sales_by_year)
+data_cleaned['Semester'] = data_cleaned['Month'].apply(lambda x:1 if x<=6 else 2)
+sales_by_semester = data_cleaned.groupby(['Year', 'Semester'])['TotalAmount'].sum()
+print(sales_by_semester)
 
->>>>>>> 7a81 (limpieza de datos y conversion a datos temporales)
+# Hallar las ventas trimestrales 
+
+# Hallat ventas por mes
