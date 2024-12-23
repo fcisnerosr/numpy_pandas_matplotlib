@@ -24,20 +24,21 @@ for col, values in unique_values.items():
 # Limpieza de datos
 data_cleaned = data.drop_duplicates()
 data_cleaned = data_cleaned.dropna(subset=['CustomerID'])
-print(data_cleaned)
-print(data_cleaned.isnull().sum())
-print(data_cleaned.duplicated().sum())
-
+#  print(data_cleaned)
+#  print(data_cleaned.isnull().sum())
+#  print('impresion de duplicated')
+#  print(data_cleaned.duplicated().sum())
+#
 # Creacion de columnas
-print(data_cleaned.head())
+#  print(data_cleaned.head())
 data_cleaned['TotalAmount'] = data_cleaned['Quantity'] * data_cleaned['UnitPrice']
-print(data_cleaned.head())
+#  print(data_cleaned.head())
 data_cleaned['InvoiceDate'] = pd.to_datetime(data_cleaned['InvoiceDate'])
-print(data_cleaned.head())
-print(data_cleaned.info())
+#  print(data_cleaned.head())
+#  print(data_cleaned.info())
 data_cleaned['Year'] = data_cleaned['InvoiceDate'].dt.year
 data_cleaned['Month'] = data_cleaned['InvoiceDate'].dt.month
-print(data_cleaned.head())
+#  print(data_cleaned.head())
 sales_by_year = data_cleaned.groupby('Year')['TotalAmount'].sum()
 print(sales_by_year)
 data_cleaned['Semester'] = data_cleaned['Month'].apply(lambda x:1 if x<=6 else 2)
@@ -45,5 +46,14 @@ sales_by_semester = data_cleaned.groupby(['Year', 'Semester'])['TotalAmount'].su
 print(sales_by_semester)
 
 # Hallar las ventas trimestrales 
+data_cleaned['Trimester'] = data_cleaned['Month'].apply(
+    lambda x: 1 if x > 0 and x <= 3 
+    else 2 if x > 3 and x <= 6 
+    else 3 if x > 6 and x <= 9 
+    else 4 if x > 9 and x <= 12 
+    else None  # Maneja casos fuera del rango 1-12
+)
+sales_by_trimester = data_cleaned.groupby(['Year', 'Trimester'])['TotalAmount'].sum()
+print(sales_by_trimester)
 
 # Hallat ventas por mes
