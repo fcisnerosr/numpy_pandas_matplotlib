@@ -100,21 +100,28 @@ data_categorized = categorize_quantity(data_cleaned)
 category_month_year = data_categorized.groupby(['Month', 'Year'])['Category'].count()
 value_list = category_month_year.values.tolist()  # Convierte los valores en una lista.
 index_list = category_month_year.index.to_list()  # Convierte los índices (Month, Year) en una lista.
-years = [year[1] for year in index_list]
 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec-2010", "Dec-2011"]
+print(category_month_year)
 
 # Crear la gráfica de barras
-plt.figure(figsize=(12, 6))
-plt.bar(months, value_list, color='skyblue')
+#  plt.figure(figsize=(12, 6))
+#  plt.bar(months, value_list, color='skyblue')
+#  plt.title("Ventas por mes y año")
+#  plt.xlabel("Meses")
+#  plt.ylabel("Ventas")
+#  plt.xticks(rotation=45)
+#  plt.tight_layout()
+#  plt.show()
 
-# Personalizar
-plt.title("Ventas por mes y año")
-plt.xlabel("Meses")
-plt.ylabel("Ventas")
-plt.xticks(rotation=45)
+# otra grafica de barras
+plt.figure(figsize=(12,6))
+data_cleaned.groupby(['Year', 'Month'])['TotalAmount'].sum().plot(kind='bar')
+plt.title('Distribucion de ventas por mes y por año')
+plt.xlabel('Año, mes')
+plt.ylabel('Ventas totales')
+#  plt.show()
 
-# Mostrar la gráfica
-plt.tight_layout()
-plt.show()
-
-
+top_products = data_cleaned.groupby('StockCode')['Quantity'].sum().sort_values(ascending=False).head(10).reset_index()
+print(top_products)
+#  top_products = top_products.reset_index()
+#  print(top_products)
