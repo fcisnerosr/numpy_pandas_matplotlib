@@ -25,11 +25,11 @@ pd.set_option('display.max_columns', None)
 #  print(data.duplicated().sum())
 
 unique_values = {col: data[col].unique() for col in data.columns}
-for col, values in unique_values.items():
-    print(f'Columna: {col}')
-    print(f'Numero de valores: {len(values)}')
-    print(f'Valores únicos: {values[:10]}')
-    print('-'*100)
+#  for col, values in unique_values.items():
+#      print(f'Columna: {col}')
+#      print(f'Numero de valores: {len(values)}')
+#      print(f'Valores únicos: {values[:10]}')
+#      print('-'*100)
 
 # Limpieza de datos
 data_cleaned = data.drop_duplicates()
@@ -101,7 +101,7 @@ category_month_year = data_categorized.groupby(['Month', 'Year'])['Category'].co
 value_list = category_month_year.values.tolist()  # Convierte los valores en una lista.
 index_list = category_month_year.index.to_list()  # Convierte los índices (Month, Year) en una lista.
 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec-2010", "Dec-2011"]
-print(category_month_year)
+#  print(category_month_year)
 
 # Crear la gráfica de barras
 #  plt.figure(figsize=(12, 6))
@@ -114,14 +114,21 @@ print(category_month_year)
 #  plt.show()
 
 # otra grafica de barras
-plt.figure(figsize=(12,6))
-data_cleaned.groupby(['Year', 'Month'])['TotalAmount'].sum().plot(kind='bar')
-plt.title('Distribucion de ventas por mes y por año')
-plt.xlabel('Año, mes')
-plt.ylabel('Ventas totales')
+#  plt.figure(figsize=(12,6))
+#  data_cleaned.groupby(['Year', 'Month'])['TotalAmount'].sum().plot(kind='bar')
+#  plt.title('Distribucion de ventas por mes y por año')
+#  plt.xlabel('Año, mes')
+#  plt.ylabel('Ventas totales')
 #  plt.show()
 
 top_products = data_cleaned.groupby('StockCode')['Quantity'].sum().sort_values(ascending=False).head(10).reset_index()
-print(top_products)
-#  top_products = top_products.reset_index()
 #  print(top_products)
+top_products = pd.merge(top_products, data_cleaned[['StockCode', 'Description']].drop_duplicates(), on='StockCode', how='left')
+print(top_products)
+plt.figure(figsize=(12,8))
+plt.barh(top_products['Description'],top_products['Quantity'])
+plt.title('Cantidad vendida')
+plt.xlabel('top de productos')
+plt.ylabel('Producto')
+plt.gca().invert_yaxis()
+plt.show()
