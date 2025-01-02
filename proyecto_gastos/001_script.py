@@ -33,7 +33,6 @@ df1 = pd.DataFrame(data, columns=['Cantidad', 'Tipo de gasto', 'Descripción', '
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 
-
 # Limpieza de datos
 df1['Forma de pago'] = df1['Forma de pago'].str.replace(r'tdc|Tdc|Transferencia|transferencia', 'debito', regex=True)
 df1['Forma de pago'] = df1['Forma de pago'].str.replace(r'crédito', 'credito', regex=True)
@@ -41,6 +40,14 @@ df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'bebé', 'bebe', regex=
 df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'formación', 'formacion', regex=True)
 df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'fummigación', 'fumigacion', regex=True)
 df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'jardín', 'jardin', regex=True)
+df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'despnesa', 'despensa', regex=True)
+df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'medicinas', 'medicina', regex=True)
+df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'preapracion', 'preparacion', regex=True)
+df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'ultrasonidos', 'bebe', regex=True)
+df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'comida fuera del hogar', 'comidas fuera del hogar', regex=True)
+df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'bici', 'bicicleta', regex=True)
+df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'envoltura', 'regalos', regex=True)
+df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'bicicletacleta', 'bicicleta', regex=True)
 
 # Concatenacion de fechas
 pattern = r'(\d\d/\d\d/\d{4})'
@@ -56,15 +63,20 @@ df = pd.concat([df1, df_from_array], axis=1)
 df.rename(columns={0:'Fecha'},inplace=True)
 df['Fecha'] = pd.to_datetime(df['Fecha'], dayfirst=True)
 #  df['Fecha'] = df['Fecha'].dt.strftime('%d-%m-%Y')
+df['Cantidad'] = pd.to_numeric(df['Cantidad'], errors='coerce')
 print(df)
-
 
 
 # Agrupaciones 
 df.set_index('Fecha', inplace=True)
 df['Month'] = df.index.month
-print(df)
+#  print(df)
 
-# Visualizacion completa del df en csv
-ruta = '~/numpy_pandas_matplotlib/proyecto_gastos/df.csv'
-df.to_csv(ruta, index=False, encoding='utf-8')
+#  # Visualizacion completa del df en csv
+#  ruta = '~/numpy_pandas_matplotlib/proyecto_gastos/df.csv'
+#  df.to_csv(ruta, index=False, encoding='utf-8')
+
+sales_cat = df.groupby(['Tipo de gasto', 'Month'])['Cantidad'].sum().reset_index()
+print(sales_cat)
+
+
