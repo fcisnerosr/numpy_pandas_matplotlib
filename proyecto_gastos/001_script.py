@@ -1,6 +1,9 @@
 import re
 import pandas as pd
 import os
+import matplotlib.pyplot as plt
+from utils import aplicar_reemplazos
+
 os.system('clear')
 
 # Lee el archivo .txt
@@ -33,22 +36,42 @@ df1 = pd.DataFrame(data, columns=['Cantidad', 'Tipo de gasto', 'Descripción', '
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 
-# Limpieza de datos
-df1['Forma de pago'] = df1['Forma de pago'].str.replace(r'tdc|Tdc|Transferencia|transferencia', 'debito', regex=True)
-df1['Forma de pago'] = df1['Forma de pago'].str.replace(r'crédito', 'credito', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'bebé', 'bebe', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'formación', 'formacion', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'fummigación', 'fumigacion', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'jardín', 'jardin', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'despnesa', 'despensa', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'medicinas', 'medicina', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'preapracion', 'preparacion', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'ultrasonidos', 'bebe', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'comida fuera del hogar', 'comidas fuera del hogar', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'bici', 'bicicleta', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'envoltura', 'regalos', regex=True)
-df1['Tipo de gasto'] = df1['Tipo de gasto'].str.replace(r'bicicletacleta', 'bicicleta', regex=True)
+print(df1)
 
+
+
+# Limpieza de datos
+replacements = {
+    'tdc|Tdc|Transferencia|transferencia': 'debito',
+    'crédito': 'credito',
+    'bebé': 'bebe',
+    'formación': 'formacion',
+    'fumigación|fumigacion': 'fumigacion',
+    'jardín': 'jardin',
+    'despensa|despnesa': 'despensa',
+    'medicinas|medicina': 'medicina',
+    'preapracion|preparación': 'preparacion',
+    'ultrasonidos': 'bebe',
+    'comida fuera del hogar': 'comidas fuera del hogar',
+    'celular': 'otros',
+    'envoltura|regalos': 'regalos',
+    'bici': 'bicicleta',
+    'garrafones|despensa': 'despensa',
+    'viajes|viaje|viajess': 'viajes',
+    'lavanderia': 'limpieza',
+    'fumigación': 'fumigacion',
+    'membrecia sams': 'otros',
+    'tramites': 'otros',
+    'microsoft': 'otros'
+}
+
+df1 = aplicar_reemplazos(df1, 'Tipo de gasto', replacements)
+df1 = df1.drop_duplicates()
+
+# Visualizacion completa del df en csv
+ruta = '~/numpy_pandas_matplotlib/proyecto_gastos/df1.csv'
+df1.to_csv(ruta, index=False, encoding='utf-8')
+#
 # Concatenacion de fechas
 pattern = r'(\d\d/\d\d/\d{4})'
 data_date = []
@@ -57,26 +80,39 @@ for line in lines:
     if match:
         date = match.group(1)
         data_date.append([date])
-df_from_array = pd.DataFrame(data_date) 
+df_from_array = pd.DataFrame(data_date)
 
-df = pd.concat([df1, df_from_array], axis=1) 
+df = pd.concat([df1, df_from_array], axis=1)
 df.rename(columns={0:'Fecha'},inplace=True)
 df['Fecha'] = pd.to_datetime(df['Fecha'], dayfirst=True)
 #  df['Fecha'] = df['Fecha'].dt.strftime('%d-%m-%Y')
 df['Cantidad'] = pd.to_numeric(df['Cantidad'], errors='coerce')
-print(df)
+#  print(df)
 
 
-# Agrupaciones 
+# Agrupaciones
 df.set_index('Fecha', inplace=True)
 df['Month'] = df.index.month
 #  print(df)
 
-#  # Visualizacion completa del df en csv
-#  ruta = '~/numpy_pandas_matplotlib/proyecto_gastos/df.csv'
-#  df.to_csv(ruta, index=False, encoding='utf-8')
-
 sales_cat = df.groupby(['Tipo de gasto', 'Month'])['Cantidad'].sum().reset_index()
+
+sales_cat['Percentage'] = sales_cat['Cantidad'] / sales_cat.groupby('Month')['Cantidad'].transform('sum') * 100
 print(sales_cat)
 
+df_pivot = sales_cat.pivot(index='Month', columns='Tipo de gasto', values='Percentage')
+#  print(df_pivot)
 
+
+
+# Graficas
+df_pivot.plot(kind='bar', stacked=True, figsize=(10, 6))
+plt.title('Distribución de gastos por mes', fontsize=16)
+plt.xlabel('Month', fontsize=14)
+plt.ylabel('Cantidad', fontsize=14)
+plt.legend(title='Tipo de gasto', fontsize=10)
+plt.xticks(rotation=0)
+
+# Mostrar el gráfico
+plt.tight_layout()
+plt.show()
