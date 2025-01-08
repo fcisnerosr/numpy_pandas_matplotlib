@@ -25,14 +25,15 @@ tip = sns.load_dataset('tips')
 
 #  sns.histplot(data=tip, x='tip', bins=5, cumulative=True, hue='sex', stat='frequency')
 #  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue='sex', stat='probability')
-#  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue='sex', stat='percent')
+#  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue=':xsex', stat='percent')
 #  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue='sex', stat='percent',multiple='dodge')
 #  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue='sex', stat='percent',multiple='stack')
 #  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue='sex', stat='percent',multiple='fill')
-#  sns.kdeplot(data=tip, x='tip', hue='sex', cumulative=False,shade=True)
+#  sns.kdeplot(data=tip, x='tip', hue='sex', cumulative=False,shade=True):qj
 #  sns.kdeplot(data=tip, x='tip', hue='sex', cumulative=True,shade=False)
 #  sns.ecdfplot(data=tip, x='tip', hue='sex')
 #  sns.ecdfplot(data=tip, x='tip', hue='sex',stat='count')
 #  sns.displot(data=tip, x='tip', hue='sex', kind='kde')
 sns.displot(data=tip, x='tip', hue='sex', kind='hist',multiple='stack')
 plt.show()
+
