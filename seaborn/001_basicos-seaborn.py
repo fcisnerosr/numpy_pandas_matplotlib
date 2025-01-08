@@ -34,6 +34,16 @@ tip = sns.load_dataset('tips')
 #  sns.ecdfplot(data=tip, x='tip', hue='sex')
 #  sns.ecdfplot(data=tip, x='tip', hue='sex',stat='count')
 #  sns.displot(data=tip, x='tip', hue='sex', kind='kde')
-sns.displot(data=tip, x='tip', hue='sex', kind='hist',multiple='stack')
+#  sns.displot(data=tip, x='tip', hue='sex', kind='hist',multiple='stack')
+#  plt.show()
+
+# VAriables categoricas
+#  sns.countplot(data=tip,x='day',hue='sex')
+#  sns.countplot(data=tip,y='day',hue='sex')
+#  sns.stripplot(data=tip,x='day',hue='sex')
+#  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex')
+#  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
+
+sns.swarmplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
 plt.show()
 
