@@ -37,13 +37,26 @@ tip = sns.load_dataset('tips')
 #  sns.displot(data=tip, x='tip', hue='sex', kind='hist',multiple='stack')
 #  plt.show()
 
-# VAriables categoricas
+# Variables categoricas
 #  sns.countplot(data=tip,x='day',hue='sex')
 #  sns.countplot(data=tip,y='day',hue='sex')
 #  sns.stripplot(data=tip,x='day',hue='sex')
 #  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex')
 #  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
 
-sns.swarmplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
-plt.show()
+#  sns.swarmplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
+#  sns.boxplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
 
+#  # Combinacion de ambas graficas, swarmplot y boxplot
+#  plt.figure(figsize=(6,6))
+#  sns.swarmplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True,color='0',marker='<')
+#  sns.boxplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
+#  plt.show()
+
+#  plt.figure(figsize=(6,6))
+#  sns.violinplot(data=tip,x='day',y='total_bill',hue='sex',split=True,dodge=True,palette='pastel')
+#  plt.show()
+
+sns.catplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True,kind='box',col='time')
+#  sns.catplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True,kind='swarm',col='time')
+plt.show()
