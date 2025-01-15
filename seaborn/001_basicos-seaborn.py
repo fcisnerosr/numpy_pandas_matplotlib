@@ -12,25 +12,16 @@ plt.switch_backend('TkAgg')  # o plt.switch_backend('QtAgg')
 
 #  sns.set(style='dark',palette='dark',font_scale=1)
 #  sns.barplot(x='Categoria', y='Valor', data=data)
-#  ruta = os.path.expanduser("~/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
-#  ruta_completa = os.path.join(ruta, "barplot.png")
-#  plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
+
 #  plt.show()
 
 tip = sns.load_dataset('tips')
 #  print(tip)
 #  print(type(tip))
 #  tip.to_csv('tip.csv', index=False, encoding='utf-8')
-#  sns.displot(data=tip, x='total_bill',y='tip', hue='sex')
-#  sns.displot(data=tip, x='total_bill',hue='sex', kind='kde',legend=False,palette='dark',alpha=0.5)
-#  plt.show()
 
 
-sns.histplot(data=tip, x='tip', bins=5, cumulative=True, hue='sex', stat='frequency')
-plt.show()
-ruta = os.path.expanduser("~/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
-ruta_completa = os.path.join(ruta, "004_stacked histogram.png")
-plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
+#  sns.histplot(data=tip, x='tip', bins=5, cumulative=True, hue='sex', stat='frequency')
 
 #  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue='sex', stat='probability')
 #  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue=':xsex', stat='percent')
@@ -51,31 +42,44 @@ plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
 #  sns.stripplot(data=tip,x='day',hue='sex')
 #  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex')
 #  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
-#
+#  plt.show()
+
 #  sns.swarmplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
+
+
 #  sns.boxplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
 #
-#  # Combinacion de ambas graficas, swarmplot y boxplot
+# Combinacion de ambas graficas, swarmplot y boxplot
 #  plt.figure(figsize=(6,6))
 #  sns.swarmplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True,color='0',marker='<')
 #  sns.boxplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
+
 #  plt.show()
+
 #gg
 #  plt.figure(figsize=(6,6))
 #  sns.violinplot(data=tip,x='day',y='total_bill',hue='sex',split=True,dodge=True,palette='pastel')
-#  plt.show()
+
 #
 #  sns.catplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True,kind='box',col='time')
 #  sns.catplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True,kind='swarm',col='time')
+#  ruta = os.path.expanduser("~/Documents/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
+#  ruta_completa = os.path.join(ruta, "010_dodge_swarm_plots_arragend_in_a_grid_layout_based_on_another_categorical_variable.png")
+#  plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
 #  plt.show()
 
 #  plt.figure(figsize=(8,6))
 #  markers = {'Lunch':'D','Dinner':'s'}
-#  sns.scatterplot(data=tip,x='total_bill',y='tip',hue='day',style='time',size='size',markers=markers)
+#  #  sns.scatterplot(data=tip,x='total_bill',y='tip',hue='day',style='time',size='size',markers=markers)
 #  plt.legend(loc='center',bbox_to_anchor=(1.09,0.5))
+
 #  plt.show()
 #
-#  sns.lineplot(data=tip,x='total_bill',y='tip')
+sns.lineplot(data=tip,x='total_bill',y='tip')
+
+ruta = os.path.expanduser("~/Documents/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
+ruta_completa = os.path.join(ruta, "012_line_plot_showing_the_relationship_between_two_numeric_variablespng")
+plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
 #  plt.show()
 #
 #  markers = {'Lunch':'D','Dinner':'s'}
