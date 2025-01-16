@@ -5,6 +5,10 @@ import os
 
 os.system('clear')
 
+#  ruta = os.path.expanduser("~/Documents/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
+#  ruta_completa = os.path.join(ruta, "010_dodge_swarm_plots_arragend_in_a_grid_layout_based_on_another_categorical_variable.png")
+#  plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
+
 # Mostrando la primera grafica en seaborn
 data = pd.DataFrame({'Categoria': ['A', 'B', 'C'], 'Valor': [1, 3, 2]})
 
