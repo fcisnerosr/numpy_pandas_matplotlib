@@ -28,21 +28,23 @@ tip = sns.load_dataset('tips')
 #  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue='sex', stat='percent',multiple='dodge')
 #  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue='sex', stat='percent',multiple='stack')
 #  sns.histplot(data=tip, x='tip', bins=15, cumulative=False, hue='sex', stat='percent',multiple='fill')
-#  sns.kdeplot(data=tip, x='tip', hue='sex', cumulative=False,shade=True):qj
+#  sns.kdeplot(data=tip, x='tip', hue='sex', cumulative=False,shade=True)
+#  plt.show()
+
 #  sns.kdeplot(data=tip, x='tip', hue='sex', cumulative=True,shade=False)
 #  sns.ecdfplot(data=tip, x='tip', hue='sex')
 #  sns.ecdfplot(data=tip, x='tip', hue='sex',stat='count')
 #  sns.displot(data=tip, x='tip', hue='sex', kind='kde')
 #  sns.displot(data=tip, x='tip', hue='sex', kind='hist',multiple='stack')
 #  plt.show()
-#
+
 #  #  Variables categoricas
 #  sns.countplot(data=tip,x='day',hue='sex')
-#  sns.countplot(data=tip,y='day',hue='sex')
+sns.countplot(data=tip,y='day',hue='sex')
 #  sns.stripplot(data=tip,x='day',hue='sex')
 #  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex')
 #  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
-#  plt.show()
+plt.show()
 
 #  sns.swarmplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
 
@@ -63,9 +65,6 @@ tip = sns.load_dataset('tips')
 #
 #  sns.catplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True,kind='box',col='time')
 #  sns.catplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True,kind='swarm',col='time')
-#  ruta = os.path.expanduser("~/Documents/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
-#  ruta_completa = os.path.join(ruta, "010_dodge_swarm_plots_arragend_in_a_grid_layout_based_on_another_categorical_variable.png")
-#  plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
 #  plt.show()
 
 #  plt.figure(figsize=(8,6))
@@ -75,25 +74,23 @@ tip = sns.load_dataset('tips')
 
 #  plt.show()
 #
-sns.lineplot(data=tip,x='total_bill',y='tip')
+#  sns.lineplot(data=tip,x='total_bill',y='tip')
 
-ruta = os.path.expanduser("~/Documents/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
-ruta_completa = os.path.join(ruta, "012_line_plot_showing_the_relationship_between_two_numeric_variablespng")
-plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
 #  plt.show()
 #
-#  markers = {'Lunch':'D','Dinner':'s'}
+#  markers = {'Lunch':'d','Dinner':'s'}
 #  sns.relplot(data=tip,x='total_bill',y='tip',hue='day',style='time',size='size',markers=markers,height=6,aspect=1.3)
+
 #  plt.show()
 #
 #  sns.jointplot(data=tip, x='total_bill',y='tip')
 #  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex')
-#  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex',kind='hist')
+#  sns.jointplot(data=tip, x='total_billusy='tip',hue='sex',kind='hist')
 #  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex',kind='kde')
 #  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex',kind='hist',marginal_ticks=True,marginal_kws=dict(bins=25,fill=False,multiple='dodge'))
 #  plt.show()
 #
 #  #  Pairplot (relaciones de variables numericas en distintas graficas)
 #  sns.pairplot(data=tip)
-#  sns.pairplot(data=tip,hue='sex',corner=True,kind='scatter')
+#  sns.pairplot(data=tip,hue='sex',kind='scatter')
 #  plt.show()
