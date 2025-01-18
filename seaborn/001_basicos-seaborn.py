@@ -43,17 +43,13 @@ tip = sns.load_dataset('tips')
 #  plt.show()
 
 #  #  Variables categoricas
-#  sns.countplot(data=tip,x='day',hue='sex')
-sns.countplot(data=tip,y='day',hue='sex')
+#  sns.countplot(data=tip,y='day',hue='sex')
 #  sns.stripplot(data=tip,x='day',hue='sex')
 #  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex')
 #  sns.stripplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
-plt.show()
-
 #  sns.swarmplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
-
-
 #  sns.boxplot(data=tip,x='day',y='total_bill',hue='sex',dodge=True)
+#  plt.show()
 #
 # Combinacion de ambas graficas, swarmplot y boxplot
 #  plt.figure(figsize=(6,6))
@@ -73,26 +69,27 @@ plt.show()
 
 #  plt.figure(figsize=(8,6))
 #  markers = {'Lunch':'D','Dinner':'s'}
-#  #  sns.scatterplot(data=tip,x='total_bill',y='tip',hue='day',style='time',size='size',markers=markers)
+#  sns.scatterplot(data=tip,x='total_bill',y='tip',hue='day',style='time',size='size',markers=markers)
 #  plt.legend(loc='center',bbox_to_anchor=(1.09,0.5))
-
+#  ruta = os.path.expanduser("~/Documents/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
+#  ruta_completa = os.path.join(ruta, "010_dodge_swarm_plots_arragend_in_a_grid_layout_based_on_another_categorical_variable.png")
+#  plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
 #  plt.show()
 #
 #  sns.lineplot(data=tip,x='total_bill',y='tip')
-
 #  plt.show()
 #
 #  markers = {'Lunch':'d','Dinner':'s'}
 #  sns.relplot(data=tip,x='total_bill',y='tip',hue='day',style='time',size='size',markers=markers,height=6,aspect=1.3)
-
+#  013_two_variable_scatter
 #  plt.show()
 #
 #  sns.jointplot(data=tip, x='total_bill',y='tip')
 #  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex')
 #  sns.jointplot(data=tip, x='total_billusy='tip',hue='sex',kind='hist')
 #  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex',kind='kde')
-#  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex',kind='hist',marginal_ticks=True,marginal_kws=dict(bins=25,fill=False,multiple='dodge'))
-#  plt.show()
+sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex',kind='hist',marginal_ticks=True,marginal_kws=dict(bins=25,fill=False,multiple='dodge'))
+plt.show()
 #
 #  #  Pairplot (relaciones de variables numericas en distintas graficas)
 #  sns.pairplot(data=tip)
