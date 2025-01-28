@@ -5,7 +5,7 @@ import os
 
 os.system('clear')
 
-#  ruta = os.path.expanduser("~/Documents/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
+  ruta = os.path.expanduser("~/Documents/sheets/data_science/001_numpy_pandas_matplotlib_seaborn/graficas_seaborn")
 #  ruta_completa = os.path.join(ruta, "010_dodge_swarm_plots_arragend_in_a_grid_layout_based_on_another_categorical_variable.png")
 #  plt.savefig(ruta_completa, dpi=300, bbox_inches="tight")
 
@@ -88,10 +88,24 @@ tip = sns.load_dataset('tips')
 #  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex')
 #  sns.jointplot(data=tip, x='total_billusy='tip',hue='sex',kind='hist')
 #  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex',kind='kde')
-sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex',kind='hist',marginal_ticks=True,marginal_kws=dict(bins=25,fill=False,multiple='dodge'))
-plt.show()
+#  sns.jointplot(data=tip, x='total_bill',y='tip',hue='sex',kind='hist',marginal_ticks=True,marginal_kws=dict(bins=25,fill=False,multiple='dodge'))
+#  plt.show()
 #
 #  #  Pairplot (relaciones de variables numericas en distintas graficas)
 #  sns.pairplot(data=tip)
 #  sns.pairplot(data=tip,hue='sex',kind='scatter')
 #  plt.show()
+
+# heatmap
+print(tip)
+numeric_columns = tip.select_dtypes(include=['number']).columns
+tip_numeric = tip[numeric_columns]
+correlation_matrix = tip_numeric.corr()
+print(correlation_matrix)
+#  sns.heatmap(correlation_matrix)
+#  plt.show()
+# impresion de grafico. Correlación numerica entre variables numericas
+#  sns.heatmap(correlation_matrix, annot=True)
+#  plt.show()
+# impresion de grafico. Correlación numerica entre variables numericas pero con dato fraccionario impreso
+sns.heatmap(correlation_matrix, annot=True,cmap='coolwarm',linewidths=5)
