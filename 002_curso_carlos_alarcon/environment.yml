@@ -1,0 +1,18 @@
+name: cursos_CA
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9 # Versión común de Python, puedes ajustar si lo necesitas
+  - numpy
+  - pandas
+  - jupyter
+  - ipykernel # Para que el entorno aparezca en Jupyter
+  - matplotlib # Para visualización básica
+  - seaborn # Para visualización estadística
+  - scikit-learn # Para machine learning básico, común en cursos de DS
+  - pip
+  - pip:
+    # Puedes añadir paquetes específicos de pip aquí si los necesitas
+    # Por ejemplo:
+    # - openpyxl # Para leer/escribir archivos .xlsx con pandas
